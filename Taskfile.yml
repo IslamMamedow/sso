@@ -1,0 +1,12 @@
+# ./Taskfile.yaml
+# See: https://taskfile.dev/api/
+
+version: "3"
+
+tasks:
+
+  migrate:  ## Команда для миграции
+
+    desc: "Migrate database"
+    cmds:  ## Тут описываем необходимые bash-команды
+      - go run ./cmd/migrator --storage-path=./storage/sso.db --migrations-path=./migrations

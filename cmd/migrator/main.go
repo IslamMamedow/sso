@@ -1,10 +1,15 @@
-package migrator
+package main
 
 import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/golang-migrate/migrate"
+	// библиотека для миграции
+	"github.com/golang-migrate/migrate/v4"
+	// Драйвер для выполнения минраций SQLITE 3
+	_ "github.com/golang-migrate/migrate/v4/database/sqlite3"
+	// Драйвер для получния миграций из файла
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
 func main() {
