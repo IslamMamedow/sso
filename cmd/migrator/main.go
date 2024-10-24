@@ -17,7 +17,7 @@ func main() {
 
 	flag.StringVar(&storagePath, "storage-path", "", "path to storage")
 	flag.StringVar(&migrationsPath, "migrations-path", "", "path to migrations")
-	flag.StringVar(&migrationTable, "migration-table", "migrations", "name of the migrations table")
+	flag.StringVar(&migrationTable, "migrations-table", "migrations", "name of the migrations table")
 	flag.Parse()
 
 	if storagePath == "" || migrationsPath == "" {
@@ -26,7 +26,7 @@ func main() {
 
 	m, err := migrate.New(
 		"file://"+migrationsPath,
-		fmt.Sprintf("sqlite3://%s?x-migrations-table-name=%s", storagePath, migrationTable),
+		fmt.Sprintf("sqlite3://%s?x-migrations-table=%s", storagePath, migrationTable),
 	)
 	if err != nil {
 		panic(err)

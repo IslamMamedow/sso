@@ -73,6 +73,7 @@ func (a *Auth) Login(
 	)
 
 	log.Info("logging in user")
+
 	user, err := a.userProvider.User(ctx, email)
 	if err != nil {
 		if errors.Is(err, storage.ErrUserNotFound) {

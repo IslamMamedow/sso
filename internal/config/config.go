@@ -24,6 +24,10 @@ func MustLoan() *Config {
 	if configPath == "" {
 		panic("config path is empty")
 	}
+	return MustLoanByPath(configPath)
+}
+
+func MustLoanByPath(configPath string) *Config {
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
 		panic("config path is not exist" + configPath)
 	}
